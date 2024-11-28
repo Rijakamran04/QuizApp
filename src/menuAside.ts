@@ -4,7 +4,6 @@ import {
   mdiChartBar, // If you prefer a chart icon for the leaderboard
   mdiAccountCircle,
   mdiBookOpen,
-  mdiPalette,
 } from '@mdi/js'
 import { MenuAsideItem } from './interfaces'
 

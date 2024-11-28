@@ -2,7 +2,6 @@ import {
   mdiAccount,
   mdiAsterisk,
   mdiFormTextboxPassword,
-  mdiGithub,
   mdiMail,
   mdiUpload,
 } from '@mdi/js'
@@ -19,7 +18,6 @@ import FormField from '../components/Form/Field'
 import FormFilePicker from '../components/Form/FilePicker'
 import LayoutAuthenticated from '../layouts/Authenticated'
 import SectionMain from '../components/Section/Main'
-import SectionTitleLineWithButton from '../components/Section/TitleLineWithButton'
 import CardBoxUser from '../components/CardBox/User'
 import type { UserForm } from '../interfaces'
 import { getPageTitle } from '../config'

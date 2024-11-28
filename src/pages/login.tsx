@@ -3,7 +3,6 @@ import type { ReactElement } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Field, Form, Formik } from 'formik'
-import Button from '../components/Button'
 import CardBox from '../components/CardBox'
 import SectionFullScreen from '../components/Section/FullScreen'
 import LayoutGuest from '../layouts/Guest'
@@ -76,7 +75,7 @@ const LoginPage = () => {
           {/* Sign-Up Link */}
           <div className="text-center mt-4">
             <p>
-              Don't have an account?{' '}
+            Don&apos;t have an account?
               <Link href="/signup" className="text-blue-500 hover:underline">
                 Sign up
               </Link>
