@@ -16,6 +16,8 @@ import { sampleChartData } from '../components/ChartLineSample/config'
 import { getPageTitle } from '../config'
 import LayoutAuthenticated from '../layouts/Authenticated'
 
+const userType = 'student';
+
 const DashboardPage = () => {
   const [chartData, setChartData] = useState(sampleChartData())
 
@@ -69,9 +71,9 @@ const DashboardPage = () => {
   )
 }
 
-// Wrap the page with LayoutAuthenticated to include the navbar
+// Wrap the page with LayoutAuthenticated to include the navbar and pass hasSubscribed state
 DashboardPage.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutAuthenticated>{page}</LayoutAuthenticated>
+  return <LayoutAuthenticated userType={userType}>{page}</LayoutAuthenticated> // Using state value directly
 }
 
 export default DashboardPage

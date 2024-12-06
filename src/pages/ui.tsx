@@ -12,7 +12,6 @@ import {
 import { Field, Formik } from 'formik'
 import Head from 'next/head'
 import { useState } from 'react'
-import type { ReactElement } from 'react'
 import Button from '../components/Button'
 import Buttons from '../components/Buttons'
 import Divider from '../components/Divider'
@@ -22,7 +21,6 @@ import CardBoxComponentTitle from '../components/CardBox/Component/Title'
 import CardBoxModal from '../components/CardBox/Modal'
 import FormCheckRadio from '../components/Form/CheckRadio'
 import FormCheckRadioGroup from '../components/Form/CheckRadioGroup'
-import LayoutAuthenticated from '../layouts/Authenticated'
 import NotificationBar from '../components/NotificationBar'
 import PillTag from '../components/PillTag'
 import SectionMain from '../components/Section/Main'
@@ -548,10 +546,6 @@ const UiPage = () => {
       </SectionMain>
     </>
   )
-}
-
-UiPage.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutAuthenticated>{page}</LayoutAuthenticated>
 }
 
 export default UiPage

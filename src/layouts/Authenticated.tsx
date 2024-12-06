@@ -1,20 +1,22 @@
+// src/Layouts/Authenticated.tsx
 import React, { ReactNode, useEffect, useState } from 'react'
 import { mdiForwardburger, mdiBackburger, mdiMenu } from '@mdi/js'
-import menuAside from '../menuAside'
+import { useRouter } from 'next/router'
 import menuNavBar from '../menuNavBar'
+import { getMenuAside } from '../menuAside'  // Import the getMenuAside function
 import Icon from '../components/Icon'
 import NavBar from '../components/NavBar'
 import NavBarItemPlain from '../components/NavBar/Item/Plain'
 import AsideMenu from '../components/AsideMenu'
 import FormField from '../components/Form/Field'
 import { Field, Form, Formik } from 'formik'
-import { useRouter } from 'next/router'
 
 type Props = {
   children: ReactNode
+  userType: 'student' | 'parent'  // Accept userType as a prop
 }
 
-export default function LayoutAuthenticated({ children }: Props) {
+export default function LayoutAuthenticated({ children, userType }: Props) {
   const [isAsideMobileExpanded, setIsAsideMobileExpanded] = useState(false)
   const [isAsideLgActive, setIsAsideLgActive] = useState(false)
 
@@ -40,6 +42,8 @@ export default function LayoutAuthenticated({ children }: Props) {
   }, [])
 
   const layoutAsidePadding = 'xl:pl-60'
+
+  const menu = getMenuAside(userType)  // Get the menu based on userType
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden lg:overflow-visible">
@@ -83,27 +87,12 @@ export default function LayoutAuthenticated({ children }: Props) {
         <AsideMenu
           isAsideMobileExpanded={isAsideMobileExpanded}
           isAsideLgActive={isAsideLgActive}
-          menu={menuAside}
+          menu={menu}  // Pass the dynamically generated menu
           onAsideLgClose={() => setIsAsideLgActive(false)}
         />
 
-          {/* Main content area */}
-          <main className="flex-grow">{children}</main>
-
-{/* Footer section 
-<FooterBar>
-  Get more with{ }
-  <a
-    href="https://tailwind-react.justboil.me/dashboard"
-    target="_blank"
-    rel="noreferrer"
-    className="text-blue-600"
-  >
-    Premium version
-  </a>
-</FooterBar>
-*/}
-
+        {/* Main content area */}
+        <main className="flex-grow">{children}</main>
       </div>
     </div>
   )

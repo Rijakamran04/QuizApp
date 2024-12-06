@@ -41,6 +41,7 @@ const mockShopItems = [
   }
   
 ]
+const userType='student'
 
 export default function ShopPage() {
   const userPoints = useAppSelector((state) => state.main.userPoints)
@@ -138,5 +139,5 @@ export default function ShopPage() {
 
 // Wrap the page with LayoutAuthenticated to include the navbar
 ShopPage.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutAuthenticated>{page}</LayoutAuthenticated>
+  return <LayoutAuthenticated userType={userType}>{page}</LayoutAuthenticated>
 }

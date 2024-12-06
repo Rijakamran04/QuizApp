@@ -9,6 +9,7 @@ type Props = {
   title: string
   main?: boolean
   children?: ReactNode
+  className?: string
 }
 
 export default function SectionTitleLineWithButton({ icon, title, main = false, children }: Props) {

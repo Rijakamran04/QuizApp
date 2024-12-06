@@ -10,7 +10,7 @@ type Reward = {
   label: string
   description: string
 }
-
+const userType = 'student';
 const Rewards = () => {
   const userPoints = useAppSelector((state) => state.main.userPoints) // Fetch points from Redux
   const badges: Reward[] = [
@@ -56,7 +56,7 @@ const Rewards = () => {
 }
 
 Rewards.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutAuthenticated>{page}</LayoutAuthenticated>
+  return <LayoutAuthenticated userType={userType}>{page}</LayoutAuthenticated>
 }
 
 export default Rewards

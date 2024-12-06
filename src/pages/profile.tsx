@@ -23,6 +23,8 @@ import type { UserForm } from '../interfaces'
 import { getPageTitle } from '../config'
 import { useAppSelector } from '../stores/hooks'
 
+const userType = 'student';
+
 const ProfilePage = () => {
   const userName = useAppSelector((state) => state.main.userName)
   const userEmail = useAppSelector((state) => state.main.userEmail)
@@ -158,7 +160,7 @@ const ProfilePage = () => {
 }
 
 ProfilePage.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutAuthenticated>{page}</LayoutAuthenticated>
+  return <LayoutAuthenticated userType={userType}>{page}</LayoutAuthenticated>
 }
 
 export default ProfilePage

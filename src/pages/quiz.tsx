@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import CardBox from '../components/CardBox';
 import SectionFullScreen from '../components/Section/FullScreen';
-import Timer from './timer';
+import Timer from '../components/timer'
 
 type Question = {
   id: number;

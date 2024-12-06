@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 import { getPageTitle } from '../config'
 
 type LoginForm = {
-  login: string
+  email: string // Updated from "login" to "email"
   password: string
   remember: boolean
 }
@@ -22,13 +22,28 @@ const LoginPage = () => {
   const router = useRouter()
 
   const handleSubmit = (formValues: LoginForm) => {
-    router.push('/dashboard') // Navigate to dashboard
-    console.log('Form values', formValues)
+    const storedUser = JSON.parse(localStorage.getItem('userDetails') || '{}')
+
+    if (
+      formValues.email === storedUser.email &&
+      formValues.password === storedUser.password
+    ) {
+      // Redirect based on role
+      if (storedUser.role === 'student') {
+        router.push('/dashboard')
+      } else if (storedUser.role === 'parent') {
+        router.push('/parentdashboard')
+      } else {
+        console.error('Unknown role:', storedUser.role)
+      }
+    } else {
+      alert('Invalid email or password!')
+    }
   }
 
   const initialValues: LoginForm = {
-    login: '', // Replace with default value if needed
-    password: '', // Replace with default value if needed
+    email: '', // Updated from "login" to "email"
+    password: '',
     remember: true,
   }
 
@@ -44,8 +59,8 @@ const LoginPage = () => {
 
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form>
-              <FormField label="Login" help="Please enter your login">
-                <Field name="login" className="w-full p-2 border rounded" />
+              <FormField label="Email" help="Please enter your email">
+                <Field name="email" className="w-full p-2 border rounded" />
               </FormField>
 
               <FormField label="Password" help="Please enter your password">
@@ -58,7 +73,7 @@ const LoginPage = () => {
 
               <Divider />
 
-              {/* Updated Login Button */}
+              {/* Login Button */}
               <div className="flex justify-center">
                 <button
                   type="submit"
@@ -75,7 +90,7 @@ const LoginPage = () => {
           {/* Sign-Up Link */}
           <div className="text-center mt-4">
             <p>
-            Don&apos;t have an account?
+              Don&apos;t have an account?{' '}
               <Link href="/signup" className="text-blue-500 hover:underline">
                 Sign up
               </Link>
